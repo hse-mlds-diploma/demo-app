@@ -60,6 +60,10 @@ jobs:
           helm template release demo-app --debug --set namespace=${NAMESPACE}, --set image.repository=${IMAGE_REPO}${IMAGE_NAME}, --set image.tag=$sha_short --output-dir ./..
 
       - name: Update ArgoCD Manifests
+        with:
+          repository: 'hse-mlds-diploma/argocd'
+          path: ./argocd
+          token: ${{ secrets.PAT }}
         run: |
           cd argocd
           export sha_short=$(git rev-parse --short ${GITHUB_SHA})
@@ -72,5 +76,5 @@ jobs:
           cd argocd
           git add .
           git commit -m "Update demo-app commit ${sha_short}"
-          git remote set-url origin https://x-access-token:${{secrets.PAT}}@github.com/hse-mlds-diploma/argocd.git
+          git remote set-url origin https://github.com/hse-mlds-diploma/argocd.git
           git push origin main
