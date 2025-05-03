@@ -72,6 +72,5 @@ jobs:
           cd argocd
           git add .
           git commit -m "Update demo-app commit ${sha_short}"
-          git remote set-url origin  https://github.com/hse-mlds-diploma/argocd.git
           git remote set-url origin https://x-access-token:${{secrets.PAT}}@github.com/hse-mlds-diploma/argocd.git
           git push origin main
