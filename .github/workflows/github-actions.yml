@@ -47,7 +47,7 @@ jobs:
         with:
           repository: 'hse-mlds-diploma/argocd'
           path: ./argocd
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
           
       - name: Generate Kubernetes Manifests with Helm
         env:
