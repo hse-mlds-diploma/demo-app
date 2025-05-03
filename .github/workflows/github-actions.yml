@@ -40,6 +40,7 @@ jobs:
         with:
           repository: 'hse-mlds-diploma/helm'
           path: ./helm
+          token: ${{ secrets.PAT }}
 
       - name: Clone ArgoCD Repository    
         uses: actions/checkout@v4
